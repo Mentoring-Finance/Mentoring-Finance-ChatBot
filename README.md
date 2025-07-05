@@ -1,5 +1,5 @@
 # 🧠 Mentoring Finance Chatbot 
-Link: https://mentoring-finance-chatbot.onrender.com/
+Link: https://mentoring-finance-chatbot-1.onrender.com
 
 This project is a conversational AI chatbot for finance-related mentoring queries. It uses **FastAPI**, **LangChain**, and **AstraDB**, with OpenAI’s GPT embeddings for intelligent context-aware responses. Designed to be deployable and embeddable, it supports both frontend integration and terminal interaction.
 
