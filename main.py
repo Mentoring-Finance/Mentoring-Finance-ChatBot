@@ -15,6 +15,7 @@ from langchain.chains.retrieval_qa.base import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Load .env
 load_dotenv()
@@ -32,7 +33,12 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 # Load and process documents
 loader = TextLoader("FAQ.txt")
 documents = loader.load()
-splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=600,         # Slightly larger to fit a full Q&A
+    chunk_overlap=50,       # Enough to keep context flowing
+    separators=["\n\n", "\n", ".", " "]  # Logical breaking
+)
+
 docs = splitter.split_documents(documents)
 
 embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
